@@ -1,0 +1,14 @@
+-- raw sql results do not include filled-in values for 'order_items.created_date'
+
+
+SELECT
+    (DATE(order_items.created_at )) AS order_items_created_date,
+    COUNT(DISTINCT order_items.order_id ) AS order_items_order_count
+FROM `cloud-training-demos.looker_ecomm.order_items`
+     AS order_items
+WHERE ((DATE(order_items.created_at )) >= '2021-01-01' )
+GROUP BY
+    1
+ORDER BY
+    1 DESC
+LIMIT 500
